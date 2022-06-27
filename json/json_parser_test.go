@@ -6,8 +6,11 @@ import (
 )
 
 func TestToken(t *testing.T) {
-	tokens := Tokenize("{\"name\":\"\\\"John Gruber\\\"\",\"age\":30,\"city\":\"New York\"}")
-	for _, token := range tokens {
-		fmt.Println(token)
+	jsonValue, err := ParseJson("{\"name\":\"\\\"John Gruber\\\"\",\"age\":30,\"city\":\"New York\"}")
+	if err != nil {
+		t.Error(err)
 	}
+
+	jsonObject := jsonValue.(JsonObject)
+	fmt.Println(jsonObject)
 }

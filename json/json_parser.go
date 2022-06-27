@@ -1,5 +1,10 @@
 package json
 
+import (
+	"errors"
+	"strconv"
+)
+
 type TokenType string
 
 const (
@@ -20,18 +25,6 @@ type Token struct {
 	Type  TokenType
 	Value string
 }
-
-type ValueType int
-
-const (
-	NULL_VALUE ValueType = iota
-	BOOLEAN_VALUE
-	NUMBER_VALUE
-	STRING_VALUE
-	ARRAY_VALUE
-	MAP_VALUE
-	OBJECT_VALUE
-)
 
 func Tokenize(json string) []Token {
 	tokens := make([]Token, 0)
@@ -98,3 +91,88 @@ func Tokenize(json string) []Token {
 	}
 	return tokens
 } // tokenize
+
+type JsonValue interface{}
+
+type JsonNull struct{}
+
+type JsonNumber float64
+
+type JsonString string
+
+type JsonBoolean bool
+
+type JsonArray []JsonValue
+
+type JsonObject map[string]JsonValue
+
+func ParseValue(tokens []Token) (JsonValue, error) {
+	switch tokens[0].Type {
+	case BEGIN_OBJECT:
+		return ParseObject(tokens)
+	case BEGIN_ARRAY:
+		return ParseArray(tokens)
+	case NULL:
+		return JsonNull{}, nil
+	case NUMBER:
+		number, err := strconv.ParseFloat(tokens[0].Value, 64)
+		if err != nil {
+			return nil, err
+		}
+		return JsonNumber(number), nil
+	case STRING:
+		return JsonString(tokens[0].Value), nil
+	case BOOLEAN:
+		return JsonBoolean(tokens[0].Value == "true"), nil
+	default:
+		panic(errors.New("ParseValue: unknown token type"))
+	}
+}
+
+func ParseArray(tokens []Token) (JsonArray, error) {
+	array := make(JsonArray, 0)
+	for i := 1; i < len(tokens); i++ {
+		if tokens[i].Type == END_ARRAY {
+			return array, nil
+		}
+		value, err := ParseValue(tokens[i:])
+		if err != nil {
+			return nil, err
+		}
+		array = append(array, value)
+	}
+	return nil, errors.New("ParseArray: no end token")
+}
+
+func ParseObject(tokens []Token) (JsonObject, error) {
+	object := make(JsonObject)
+	for i := 1; i < len(tokens); i++ {
+		if tokens[i].Type == END_OBJECT {
+			return object, nil
+		}
+		if tokens[i].Type != STRING {
+			return nil, errors.New("ParseObject: expected string")
+		}
+		key := tokens[i].Value
+		i++
+		if tokens[i].Type != SEP_COLON {
+			return nil, errors.New("ParseObject: expected colon")
+		}
+		i++
+		value, err := ParseValue(tokens[i:])
+		if err != nil {
+			return nil, err
+		}
+		object[key] = value
+		j := i + 1
+		if j < len(tokens) && tokens[j].Type == SEP_COMMA {
+			i = j
+		}
+	}
+	return nil, errors.New("ParseObject: no end token")
+}
+
+func ParseJson(json string) (JsonValue, error) {
+	tokens := Tokenize(json)
+	return ParseValue(tokens)
+}
