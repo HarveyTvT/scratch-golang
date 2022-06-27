@@ -5,10 +5,10 @@ code snippets of golang
 
 ```
 .
-├── algorithm 
-├── json
-├── leetcode
-├── main.go
+├── algorithm   // classic algorithms written in go
+├── json        // a simple json parser
+├── leetcode    // leetcode problems
+├── main.go     
 └── go.mod
 
 ```
