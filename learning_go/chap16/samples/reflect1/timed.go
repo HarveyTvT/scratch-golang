@@ -20,3 +20,4 @@ func MakeTimedFunc(f any) any {
 
 	return wrapperF.Interface()
 }
+
