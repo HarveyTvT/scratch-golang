@@ -12,4 +12,4 @@ code snippets of golang
 ```
 
 # Roadmap.sh projects
-1. [Task Tracker CLI](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh)
+1. [Task Tracker CLI](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/tasktracker)
