@@ -13,4 +13,4 @@ code snippets of golang
 
 # Roadmap.sh projects
 1. [Task Tracker CLI](https://roadmap.sh/projects/task-tracker)
-   https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/tasktracker
+   * [solution](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/tasktracker)
