@@ -23,3 +23,5 @@ code snippets of golang
    * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/githubuseractivity)
 3. [Expense Tracker CLI](https://roadmap.sh/projects/expense-tracker)
    * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/expensetracker)
+4. [URL Shortening Service](https://roadmap.sh/projects/url-shortening-service)
+   * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/urlshorten)
