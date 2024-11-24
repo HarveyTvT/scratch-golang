@@ -1,17 +1,22 @@
 # scratch-golang
 code snippets of golang
 
-```
+```plaintext
 .
-├── algorithm   // classic algorithms written in go
-├── json        // a simple json parser
-├── leetcode    // leetcode problems
+├── algorithm
+├── go.mod
+├── go.sum
+├── json
+├── learning_go
+├── leetcode
 ├── main.go
-└── go.mod
+├── README.md
+└── roadmapsh
 
 ```
 
-# Roadmap.sh projects
+## Roadmap.sh projects
+
 1. [Task Tracker CLI](https://roadmap.sh/projects/task-tracker)
    * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/tasktracker)
 2. [Github User Activity](https://roadmap.sh/projects/github-user-activity)
