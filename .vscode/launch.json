@@ -11,6 +11,20 @@
             "mode": "auto",
             "program": "${workspaceFolder}/roadmapsh/urlshorten/cmd/url-shorten.go",
             "env": {},
+        },
+        {
+            "name": "caching-proxy",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/roadmapsh/cachingproxy/cmd/caching-proxy.go",
+            "env": {},
+            "args": [
+                "--port",
+                "8080",
+                "--origin",
+                "https://www.baidu.com"
+            ]
         }
     ]
 }
