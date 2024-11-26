@@ -25,6 +25,17 @@
                 "--origin",
                 "https://www.baidu.com"
             ]
+        },
+        {
+            "name": "broadcast-server",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/roadmapsh/broadcastserver/cmd/broadcast-server.go",
+            "env": {},
+            "args": [
+                "--port",
+            ]
         }
     ]
 }

@@ -27,3 +27,5 @@ code snippets of golang
    * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/urlshorten)
 5. [Caching Proxy](https://roadmap.sh/projects/caching-server)
    * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/cachingproxy)
+6. [Broadcast Server](https://roadmap.sh/projects/broadcast-server)
+   * [code](https://github.com/HarveyTvT/scratch-golang/tree/master/roadmapsh/broadcastserver)
