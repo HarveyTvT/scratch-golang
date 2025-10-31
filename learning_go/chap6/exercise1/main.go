@@ -14,7 +14,7 @@ func MakePersonPointer(firstName, lastName string, age int) *Person {
 	return &Person{firstName, lastName, age}
 }
 
-// go build -gcflags="-m" exercise_1.go
+// go build -gcflags="-m" main.go
 func main() {
 	MakePerson("John", "Doe", 30)
 	MakePersonPointer("John", "Doe", 30)
